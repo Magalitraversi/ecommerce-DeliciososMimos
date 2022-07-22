@@ -1,17 +1,17 @@
 import React from 'react';
 import Footer from './componentes/Footer.jsx';
 import Navbar from './componentes/Navbar.jsx';
-import ListadoProductos from './componentes/ListadoProductos.jsx';
+import ItemListContainer from './componentes/ItemListContainer'
 
 
 function App() {
   return (
     <div className="App">
-      <Navbar/>
+      <Navbar />
       <h1>Ecommerce Deliciosos mimos  </h1>
-      <ListadoProductos/>
+      <ItemListContainer />
 
-      <Footer/>
+      <Footer />
     </div>
   );
 }
