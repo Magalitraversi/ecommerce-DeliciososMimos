@@ -1,6 +1,6 @@
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faShoppingCart} from '@fortawesome/free-solid-svg-icons'
+import CartWidget from './CartWidget'
+
 const Navbar = () => {
     return (
         <nav class="navbar navbar-expand-lg bg-dark">
@@ -21,7 +21,7 @@ const Navbar = () => {
                             <a class="nav-link text-light" href="#">Contacto</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="#"><FontAwesomeIcon icon={faShoppingCart} /></a>
+                            <a class="nav-link text-light" href="#"><CartWidget/></a>
                         </li>
                     </ul>
                 </div>
