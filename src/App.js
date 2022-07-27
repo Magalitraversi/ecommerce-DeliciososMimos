@@ -11,7 +11,7 @@ function App() {
       <h1>Ecommerce Deliciosos mimos  </h1>
       <ItemListContainer />
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
