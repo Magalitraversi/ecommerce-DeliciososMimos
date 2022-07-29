@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <h1>Ecommerce Deliciosos mimos  </h1>
+      <h1 className='text-center'>Ecommerce Deliciosos mimos  </h1>
       <ItemListContainer />
 
       {/* <Footer /> */}

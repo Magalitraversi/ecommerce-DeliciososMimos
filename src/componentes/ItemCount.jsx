@@ -1,25 +1,29 @@
 import React, { useState } from 'react'
 
-const ItemCount = ({ producto1, accion }) => {
+const ItemCount = ({ data, accion }) => {
 
-    console.log(producto1)
-    const {titulo, descripcion, imagen, stock} = producto1
+
+    const {titulo, descripcion, imagen, stock} = data
 
     const [contador, modificarContador] = useState(1)
 
     const stockActual = (stock - contador)
     
     const disminuirProducto = () => {
-        modificarContador(contador - 1)
+        if(contador >= 1){
+            modificarContador(contador - 1)
+        }
     }
     
     const aumentarProducto = () => {
-        modificarContador(contador + 1)
+        if(stockActual >= stockActual && stockActual > 0){
+            modificarContador(contador + 1)
+        }
     }
     
     return (
         <div className="col-sm-3">
-            <div class="card shadow">
+            <div class="card shadow mb-3">
 
                 <img src={imagen} class="card-img-top" alt="..." />
                 <div class="card-body">
