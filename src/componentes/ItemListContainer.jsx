@@ -15,7 +15,10 @@ const ItemListContainer = () => {
     }, [productos])
 
     const productosPromise = new Promise((resolve, reject) => {
-        resolve(listadoProductos);
+        setTimeout(() => {
+            resolve(listadoProductos);
+            
+        },2000);
     })
 
     const obtenerProductos = async () => {
