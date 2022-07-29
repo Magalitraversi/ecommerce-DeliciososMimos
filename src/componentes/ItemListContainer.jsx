@@ -1,32 +1,54 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ItemCount from './ItemCount'
-import Producto from './Producto'
-
-const ListadoProductos = () => {
+import listadoProductos from '../Utils/ListadoProductos'
 
 
-    const producto1 = {
-            titulo: "Producto",
-            descripcion: "Descripcion del producto",
-            imagen: "https://cuk-it.com/wp-content/uploads/2020/07/thumb02-1-1024x576.jpg",
-            stock: 5,
+
+
+const ItemListContainer = () => {
+
+    const [productos, guardarProductos] = useState([])
+
+
+    useEffect(() => {
+        obtenerProductos()
+    }, [productos])
+
+    const productosPromise = new Promise((resolve, reject) => {
+        resolve(listadoProductos);
+    })
+
+    const obtenerProductos = async () => {
+        try {
+            const respuesta = await productosPromise
+            guardarProductos(respuesta)
+        } catch (error) {
+            console.log(error)
         }
+    }
 
-    const submitComprar = () => {console.log("añadido al carrito")}
+    const submitComprar = () => { console.log("añadido al carrito") }
+
 
     return (
-        <div className='row mt-4'>
-            <Producto
-                titulo="Tableta"
-                descripcion="Elaborada con el chocolate que se ajuste a tu paladar"
-                imagen="https://s1.eestatic.com/2018/11/07/actualidad/actualidad_351478872_104884997_1706x960.jpg"
-            />
-            <ItemCount 
-                producto1={producto1}
-                accion={submitComprar}
-            />
+        <div className="container">
+            <div className='row mt-4'>
+                {
+                    productos.map(item => {
+                        return (
+                            <ItemCount
+                                key={item.id}
+                                data={item}
+                                accion={submitComprar}
+                            />
+                        )
+
+
+                    })
+                }
+            </div>
         </div>
     )
 }
 
-export default ListadoProductos
+export default ItemListContainer;
