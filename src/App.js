@@ -3,17 +3,26 @@ import Footer from './componentes/Footer.jsx';
 import Navbar from './componentes/Navbar.jsx';
 import ItemListContainer from './componentes/ItemListContainer'
 import ItemDetailContainer from './componentes/ItemDetailContainer.jsx';
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './componentes/Home.jsx';
+import CategoriasContainer from './componentes/CategoriasContainer.jsx';
 
 function App() {
   return (
-    <div className="App">
+    <BrowserRouter>
+
       <Navbar />
-      <h1 className='text-center'>Ecommerce Deliciosos mimos  </h1>
-      <ItemListContainer />
-      <ItemDetailContainer />
+
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path="/productos" element={<ItemListContainer />} />
+        <Route path="/productos/:id" element={<ItemDetailContainer />} />
+        <Route path='/categorias' element={<CategoriasContainer/>} />
+        <Route path='/categorias/:categoria' element={<ItemListContainer/>} />
+      </Routes>
       {/* <Footer /> */}
-    </div>
+
+    </BrowserRouter>
   );
 }
 
