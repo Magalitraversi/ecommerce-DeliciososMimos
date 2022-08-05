@@ -1,0 +1,10 @@
+/* .carta-producto{
+    height: 400px;
+    width: 270px;
+}
+
+ */
+ .carta-producto img{
+    height: 250px;
+    object-fit: cover;
+}

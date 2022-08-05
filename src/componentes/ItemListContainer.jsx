@@ -1,34 +1,43 @@
 import React, { useEffect, useState } from 'react'
 import ItemCount from './ItemCount'
-import listadoProductos from '../Utils/ListadoProductos'
-
+import ListadoProductos from '../Utils/ListadoProductos'
+import { useParams } from 'react-router-dom';
 
 
 
 const ItemListContainer = () => {
 
     const [productos, guardarProductos] = useState([])
-
-
+    
+    
     useEffect(() => {
+
+        const obtenerProductos = async () => {
+            try {
+                const respuesta = await productosPromise
+                guardarProductos(respuesta)
+            } catch (error) {
+                console.log(error)
+            }
+        }
         obtenerProductos()
     }, [productos])
 
+    const {categoria} = useParams()
+
+    const filterCategory = ListadoProductos.filter((item) => item.categoria === categoria)
+
+    
     const productosPromise = new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(listadoProductos);
+            if (categoria) {
+                resolve(filterCategory)
+            }else {
+                resolve(ListadoProductos);
+            }
             
-        },2000);
+        },1000);
     })
-
-    const obtenerProductos = async () => {
-        try {
-            const respuesta = await productosPromise
-            guardarProductos(respuesta)
-        } catch (error) {
-            console.log(error)
-        }
-    }
 
     const submitComprar = () => { console.log("añadido al carrito") }
 

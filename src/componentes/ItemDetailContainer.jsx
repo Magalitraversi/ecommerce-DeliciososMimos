@@ -1,60 +1,56 @@
 import React, { useEffect, useState } from 'react'
-import ProductoMuestra from '../Utils/ProductoMuestra'
+import listadoProductos from '../Utils/ListadoProductos'
+import ItemDetail from './ItemDetail'
+import {useParams} from 'react-router-dom'
 
 const ItemDetailContainer = () => {
 
+    //productos llamados en la promise
+    const [productos, guardarProductos] = useState([])
+    //producto encontrado en el some
     const [producto, guardarProducto] = useState([])
 
+    //   useParams es un hook que nos brinda react-router-dom,
+    //   su funcion es proporcionar los parametros definidos en la ruta.
+    //   <Route path="/productos/:id" element={<ItemDetailContainer />} />, en este caso,
+    //   despues de los ":" se proporciona "id". Y el mismo "id" lo proporcionamos en:
+    //   <Link to={`/productos/${id}`} className="text-decoration-none"></Link>
+    //   y lo obtenemos de la forma de abajo.   
+    const { id } = useParams()
+
     useEffect(() => {
+        filtrarProducto()
         obtenerProductos()
-    }, [producto])
+    }, [productos])
 
-    const productoPromise = new Promise((resolve, reject) => {
+    const productosPromise = new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(ProductoMuestra);
-
-        }, 2000);
+            resolve(listadoProductos);
+            
+        },15);
     })
 
     const obtenerProductos = async () => {
         try {
-            const respuesta = await productoPromise
-            guardarProducto(respuesta)
+            const respuesta = await productosPromise
+            guardarProductos(respuesta)
         } catch (error) {
             console.log(error)
         }
     }
 
-    const submitComprar = () => { console.log("añadido al carrito") }
-
+    const filtrarProducto = () => {
+        productos.some((item) => {
+            if(item.id == id){
+                console.log("producto filtrado: ", item)
+                guardarProducto(item)
+            }
+        })
+    }
 
     return (
-        <div className="container">
-            <div className="card shadow">
-                {
-                    producto.map(item => {
-                        return (
-                            <div className="row">
-                                <div className="col-sm-6">
-                                    <div className="m-3 text-center">
-                                        <img src={item.imagen} className="img-fluid" />
-                                    </div>
-                                </div>
-                                <div className="col-sm-6 p-3">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{item.titulo}</h5>
-                                        <p class="card-text">{item.descripcion}</p>
-                                        <h5 class="text-dark">$ {item.precio}</h5>
-                                        <a href="#" onClick={submitComprar} className="btn btn-success">Comprar</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        )
-                    })
-                }
-
-            </div>
+        <div className="container mt-4">
+            <ItemDetail data={producto} />
         </div>
 
     )
