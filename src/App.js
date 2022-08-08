@@ -6,6 +6,7 @@ import ItemDetailContainer from './componentes/ItemDetailContainer.jsx';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './componentes/Home.jsx';
 import CategoriasContainer from './componentes/CategoriasContainer.jsx';
+import PaginaNoEncontrada from './componentes/PaginaNoEncontrada.jsx';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/productos/:id" element={<ItemDetailContainer />} />
         <Route path='/categorias' element={<CategoriasContainer/>} />
         <Route path='/categorias/:categoria' element={<ItemListContainer/>} />
+        <Route path='*' element={<PaginaNoEncontrada />} />
       </Routes>
       {/* <Footer /> */}
 

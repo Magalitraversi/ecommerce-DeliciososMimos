@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
-import { Link } from "react-router-dom";
 
-const ItemCount = ({ data, accion }) => {
-
-
-    const { titulo, descripcion, imagen, stock, id } = data
+const ItemCount = ({ guardarCantidadSeleccionada, stock }) => {
 
     const [contador, modificarContador] = useState(1)
 
     const stockActual = (stock - contador)
+
 
     const disminuirProducto = () => {
         if (contador >= 1) {
@@ -22,49 +19,28 @@ const ItemCount = ({ data, accion }) => {
         }
     }
 
+    const agregar = () => {
+        guardarCantidadSeleccionada(contador)
+    }
+
+
     return (
-        <div className="col-sm-3">
-            <Link to={`/productos/${id}`} className="text-decoration-none">
-                <div className="card shadow mb-3 carta-producto">
+        <div className="">
 
-                    <img src={imagen} className="img-fluid" alt="..." />
-                    <div className="card-body bg-dark">
-                        <h5 className="card-title text-light">{titulo} </h5>
-                        <p className="card-text text-light">{descripcion} </p>
-                        <p className="card-text text-light">stock actual: {stockActual} </p>
-
-                        <hr />
-                        <div className="row text-center">
-                            <div className="col-sm-4">
-                                <button className='btn btn-dark' onClick={disminuirProducto}>-</button>
-
-                            </div>
-                            <div className="col-sm-4">
-                                <p className='text-light'>{contador}</p>
-                            </div>
-                            <div className="col-sm-4">
-                                <button className='btn btn-dark' onClick={aumentarProducto}>+</button>
-
-                            </div>
-                        </div>
-                        <div className="col-auto text-center">
-                            <button className="btn btn-primary" onClick={accion}>Añadir al carrito</button>
-
-                        </div>
-
-
-                    </div>
+            <div className='col-sm-3'>
+                <div class="input-group mb-3 text-center">
+                    <button className="btn btn-outline-secondary" type="button" onClick={disminuirProducto}>-</button>
+                    <input type="text" className="form-control" placeholder="" aria-label="Example text with button addon" value={contador} disabled />
+                    <button className="btn btn-outline-secondary" type="button" onClick={aumentarProducto}>+</button>
                 </div>
-            </Link>
+
+            </div>
+            <div className="col-sm-4">
+
+                <button className="btn btn-warning w-100" onClick={agregar}>Agregar al carrito</button>
+            </div>
         </div>
     )
 }
 
 export default ItemCount
-
-
-
-
-
-
-
