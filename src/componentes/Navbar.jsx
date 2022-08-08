@@ -1,6 +1,6 @@
 import React from 'react'
 import CartWidget from './CartWidget'
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
@@ -13,16 +13,13 @@ const Navbar = () => {
                 <div className="collapse navbar-collapse d-flex flex-row-reverse" id="navbarNav">
                     <ul className="navbar-nav ">
                         <li className="nav-item">
-                        <Link to="/" className='text-decoration-none'><a className="nav-link text-light">Inicio</a></Link>
+                            <Link to="/productos" className='text-decoration-none'><a className="nav-link text-light">Productos</a></Link>
                         </li>
                         <li className="nav-item">
-                        <Link to="/productos" className='text-decoration-none'><a className="nav-link text-light">Productos</a></Link>
+                            <Link to="/categorias" className='text-decoration-none'><a className="nav-link text-light">Categorias</a></Link>
                         </li>
                         <li className="nav-item">
-                        <Link to="/categorias" className='text-decoration-none'><a className="nav-link text-light">Categorias</a></Link>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link text-light"><CartWidget/></a>
+                           <Link to="/carrito"> <a className="nav-link text-light"><CartWidget /></a></Link>
                         </li>
                     </ul>
                 </div>

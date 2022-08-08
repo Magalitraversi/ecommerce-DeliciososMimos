@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import ItemCount from './ItemCount'
+import Item from './Item'
 import ListadoProductos from '../Utils/ListadoProductos'
 import { useParams } from 'react-router-dom';
 
@@ -28,7 +28,7 @@ const ItemListContainer = () => {
     const filterCategory = ListadoProductos.filter((item) => item.categoria === categoria)
 
     
-    const productosPromise = new Promise((resolve, reject) => {
+    const productosPromise = new Promise((resolve) => {
         setTimeout(() => {
             if (categoria) {
                 resolve(filterCategory)
@@ -48,7 +48,7 @@ const ItemListContainer = () => {
                 {
                     productos.map(item => {
                         return (
-                            <ItemCount
+                            <Item
                                 key={item.id}
                                 data={item}
                                 accion={submitComprar}

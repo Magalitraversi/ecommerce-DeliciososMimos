@@ -13,7 +13,7 @@ const CategoriasContainer = () => {
                     <div className="col-sm-4 mt-2 mb-2">
 
                         <Link to='/categorias/bombones' className='text-decoration-none'>
-                            <div className="card shadow">
+                            <div className="card shadow bg-dark carta-categoria">
                                 <div className="card-body">
                                     <div className="row">
                                         <div className="col">
@@ -22,7 +22,7 @@ const CategoriasContainer = () => {
                                             </div>
                                         </div>
                                         <div className="col">
-                                            <h3>Bombones</h3>
+                                            <h3 className='text-light'>Bombones</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -33,39 +33,39 @@ const CategoriasContainer = () => {
                     <div className="col-sm-4 mt-2 mb-2">
                         <Link to='/categorias/tabletas' className='text-decoration-none'>
 
-                        <div className="card shadow">
-                            <div className="card-body">
-                                <div className="row">
-                                    <div className="col">
-                                        <div>
-                                            <img src={tabletasImg} className='img-fluid' alt="tabletas" />
+                            <div className="card shadow bg-dark carta-categoria">
+                                <div className="card-body">
+                                    <div className="row">
+                                        <div className="col">
+                                            <div>
+                                                <img src={tabletasImg} className='img-fluid' alt="tabletas" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="col">
-                                        <h3>Tabletas</h3>
+                                        <div className="col">
+                                            <h3 className='text-light'>Tabletas</h3>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         </Link>
                     </div>
                     <div className="col-sm-4 mt-2 mb-2">
                         <Link to='/categorias/alfajores' className='text-decoration-none'>
-                        
-                        <div className="card shadow">
-                            <div className="card-body">
-                                <div className="row">
-                                    <div className="col">
-                                        <div>
-                                            <img src={alfajoresImg} className='img-fluid' alt="alfajores" />
+
+                            <div className="card shadow bg-dark carta-categoria">
+                                <div className="card-body">
+                                    <div className="row">
+                                        <div className="col">
+                                            <div>
+                                                <img src={alfajoresImg} className='img-fluid' alt="alfajores" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="col">
-                                        <h3>Alfajores</h3>
+                                        <div className="col">
+                                            <h3 className='text-light'>Alfajores</h3>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         </Link>
                     </div>
                 </div>
