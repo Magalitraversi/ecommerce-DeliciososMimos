@@ -6,7 +6,10 @@ const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-lg bg-dark">
             <div className="container-fluid">
-                <a className="navbar-brand text-light" href="/">Deliciosos Mimos</a>
+                <Link to="/" className='text-decoration-none'>
+                    <a className="navbar-brand text-light">Deliciosos Mimos</a>
+
+                </Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -19,7 +22,7 @@ const Navbar = () => {
                             <Link to="/categorias" className='text-decoration-none'><a className="nav-link text-light">Categorias</a></Link>
                         </li>
                         <li className="nav-item">
-                           <Link to="/carrito"> <a className="nav-link text-light"><CartWidget /></a></Link>
+                            <Link to="/carrito"> <a className="nav-link text-light"><CartWidget /></a></Link>
                         </li>
                     </ul>
                 </div>

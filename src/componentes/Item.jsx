@@ -5,7 +5,7 @@ const Item = ({ data }) => {
 
 
 
-    const { titulo, descripcion, imagen, stock, id } = data
+    const { titulo, descripcion, imagen, stock, id, precio } = data
 
     return (
         <div className="col-sm-3">
@@ -17,6 +17,11 @@ const Item = ({ data }) => {
                         <h5 className="card-title text-light">{titulo} </h5>
                         <p className="card-text text-light">{descripcion} </p>
                         <p className="card-text text-light">stock actual: {stock} </p>
+                        <hr />
+                        <div className="text-end">
+                            <span className="badge bg-warning text-dark">$ {precio}</span>
+
+                        </div>
                     </div>
 
                 </div>
