@@ -42,7 +42,6 @@ const ItemDetailContainer = () => {
     const filtrarProducto = () => {
         productos.some((item) => {
             if(item.id == id){
-                console.log("producto filtrado: ", item)
                 guardarProducto(item)
             }
         })
