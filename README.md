@@ -9,13 +9,10 @@ React, React-router-dom, bootstrap
 
 ## Imagenes del proyecto
 
-[url=https://postimg.cc/14ZXXmv4][img]https://i.postimg.cc/14ZXXmv4/vista1.png[/img][/url]
-
-[url=https://postimg.cc/pm7XHR9W][img]https://i.postimg.cc/pm7XHR9W/vista2.png[/img][/url]
-
-[url=https://postimg.cc/F7rKbP54][img]https://i.postimg.cc/F7rKbP54/vista3.png[/img][/url]
-
-[url=https://postimg.cc/F1gRJM6p][img]https://i.postimg.cc/F1gRJM6p/vista4.png[/img][/url]
+![vista1](https://user-images.githubusercontent.com/102333609/184265902-eba9d1b4-eb75-41db-8a50-26b6fec63a0d.PNG)
+![vista2](https://user-images.githubusercontent.com/102333609/184265920-95f9b1ad-c27f-4a13-b780-90914527e4c7.PNG)
+![vista3](https://user-images.githubusercontent.com/102333609/184265925-cb7f086a-d74e-480f-9b53-62846b31cbf9.PNG)
+![vista4](https://user-images.githubusercontent.com/102333609/184265930-231700ba-c13f-4eff-8402-06004e8ca32e.PNG)
 
 ## Autora
 
