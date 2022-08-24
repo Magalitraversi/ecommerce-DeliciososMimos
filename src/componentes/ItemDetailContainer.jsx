@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import listadoProductos from '../Utils/ListadoProductos'
 import ItemDetail from './ItemDetail'
-import {useParams} from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import bd from '../Utils/firebaseConfig'
+import { collection, getDocs } from 'firebase/firestore';
+
 
 const ItemDetailContainer = () => {
 
-    //productos llamados en la promise
-    const [productos, guardarProductos] = useState([])
     //producto encontrado en el some
     const [producto, guardarProducto] = useState([])
+
+
+    const [productosBD, setProductosBD] = useState([])
+
+
 
     //   useParams es un hook que nos brinda react-router-dom,
     //   su funcion es proporcionar los parametros definidos en la ruta.
@@ -19,29 +24,27 @@ const ItemDetailContainer = () => {
     const { id } = useParams()
 
     useEffect(() => {
+        getProductos()
         filtrarProducto()
-        obtenerProductos()
-    }, [productos])
+    }, [productosBD])
 
-    const productosPromise = new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(listadoProductos);
-            
-        },15);
-    })
-
-    const obtenerProductos = async () => {
-        try {
-            const respuesta = await productosPromise
-            guardarProductos(respuesta)
-        } catch (error) {
-            console.log(error)
-        }
+    // obtener productos de firestore
+    const getProductos = async () => {
+        const coleccionProductos = collection(bd, 'productos')
+        getDocs(coleccionProductos).then(response => {
+            const product = response.docs.map(doc => (
+                doc.data()
+            ))
+            setProductosBD(product)
+        })
+            .catch(error => {
+                console.log(error.message)
+            })
     }
 
     const filtrarProducto = () => {
-        productos.some((item) => {
-            if(item.id == id){
+        productosBD.some((item) => {
+            if (item.id === id) {
                 guardarProducto(item)
             }
         })
