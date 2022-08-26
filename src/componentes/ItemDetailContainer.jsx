@@ -2,57 +2,45 @@ import React, { useEffect, useState } from 'react'
 import ItemDetail from './ItemDetail'
 import { useParams } from 'react-router-dom'
 import bd from '../Utils/firebaseConfig'
-import { collection, getDocs } from 'firebase/firestore';
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 
 const ItemDetailContainer = () => {
 
-    //producto encontrado en el some
-    const [producto, guardarProducto] = useState([])
-
-
-    const [productosBD, setProductosBD] = useState([])
-
-
-
-    //   useParams es un hook que nos brinda react-router-dom,
-    //   su funcion es proporcionar los parametros definidos en la ruta.
-    //   <Route path="/productos/:id" element={<ItemDetailContainer />} />, en este caso,
-    //   despues de los ":" se proporciona "id". Y el mismo "id" lo proporcionamos en:
-    //   <Link to={`/productos/${id}`} className="text-decoration-none"></Link>
-    //   y lo obtenemos de la forma de abajo.   
+    const [productosBD, setProductosBD] = useState({})
     const { id } = useParams()
 
     useEffect(() => {
-        getProductos()
-        filtrarProducto()
-    }, [productosBD])
-
-    // obtener productos de firestore
-    const getProductos = async () => {
-        const coleccionProductos = collection(bd, 'productos')
-        getDocs(coleccionProductos).then(response => {
-            const product = response.docs.map(doc => (
-                doc.data()
-            ))
-            setProductosBD(product)
+        getProduct().then((res) => {
+            setProductosBD(res)
         })
-            .catch(error => {
-                console.log(error.message)
-            })
-    }
+    }, [id])
 
-    const filtrarProducto = () => {
-        productosBD.some((item) => {
-            if (item.id === id) {
-                guardarProducto(item)
-            }
-        })
+    console.log(productosBD)
+
+    const getProduct = async () => {
+        const querydb = getFirestore();
+        const docRef = doc(querydb, 'productos', id)
+        const docSnapshot = await getDoc(docRef)
+        let product = docSnapshot.data()
+
+        product.id = docSnapshot.id
+        return product
+
     }
+    const productosTipeado = [{
+        id: 4,
+        titulo: "Tableta con Almendras",
+        descripcion: "Descripcion del producto",
+        imagen: "https://d3ugyf2ht6aenh.cloudfront.net/stores/137/307/products/img_0075_1-tableta-grande-cortada1-193a836c05ee21f88316214608703353-1024-1024.jpg",
+        stock: 8,
+        categoria: 'tabletas',
+        precio: 800
+    }]
 
     return (
         <div className="container mt-4">
-            <ItemDetail data={producto} />
+            <ItemDetail data={productosBD} />
         </div>
 
     )
