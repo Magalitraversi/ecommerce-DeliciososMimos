@@ -5,7 +5,6 @@ import ItemCount from './ItemCount'
 
 const ItemDetail = ({ data }) => {
 
-
     const [cantidadSeleccionada, guardarCantidadSeleccionada] = useState(1)
 
     return (
