@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const CategoriasContainer = () => {
 
     return (
-        <div className="container">
+        <div className="container min-vh-100">
             <div className="col-sm-12 mt-5">
                 <div className="row p-5">
                     <div className="col-sm-4 mt-2 mb-2">

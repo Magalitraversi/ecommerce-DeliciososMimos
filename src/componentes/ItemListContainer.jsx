@@ -38,7 +38,7 @@ const ItemListContainer = () => {
 
 
     return (
-        <div className="container">
+        <div className="container min-vh-100">
             <div className='row mt-4'>
                 {
                     datos.length > 0 ?

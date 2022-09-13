@@ -69,7 +69,7 @@ const Cart = () => {
     }
 
     return (
-        <div className="container mt-2">
+        <div className="container mt-2 min-vh-100">
             {
                 cartProductos.length > 0 ? (
                     <div className="card shadow bg-dark">

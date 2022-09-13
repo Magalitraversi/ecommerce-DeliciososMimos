@@ -25,7 +25,7 @@ function App() {
           <Route path='/categorias/:categoria' element={<ItemListContainer />} />
           <Route path='*' element={<PaginaNoEncontrada />} />
         </Routes>
-        {/* <Footer /> */}
+        {<Footer /> }
 
       </BrowserRouter>
     </CartProvider>
