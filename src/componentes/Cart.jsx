@@ -5,6 +5,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
 import { collection, addDoc } from "firebase/firestore";
 import bd from '../Utils/firebaseConfig'
+import Swal from 'sweetalert2'
 
 const Cart = () => {
     const { cartProductos, limpiarCarro, eliminarProductoCarrito } = useContext(CartContext)
@@ -58,6 +59,13 @@ const Cart = () => {
     const mandarDatos = async (nuevaOrden) => {
         const coleccionOrden = collection(bd, 'ordenes')
         const ordenDoc = await addDoc(coleccionOrden, nuevaOrden)
+    }
+
+    const finalizarCompra = () => {
+        Swal.fire({
+            title:'Realizaste tu compra con éxito!',
+            icon:'success',
+          })
     }
 
     return (
@@ -181,7 +189,7 @@ const Cart = () => {
 
                                 </div>
                                 <div className="text-center">
-                                    <button type="submit" className="btn btn-primary">Finalizar compra</button>
+                                    <button type="submit" className="btn btn-primary"onClick={finalizarCompra}>Finalizar compra</button>
 
                                 </div>
                             </form>
